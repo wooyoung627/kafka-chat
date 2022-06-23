@@ -1,5 +1,6 @@
 package com.wylee.proj.controller;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
@@ -25,8 +26,9 @@ public class SessionController {
 	}
 	
 	@GetMapping("/session-id")
-	public String sessionId(HttpSession session) {
+	public String sessionId(HttpSession session, HttpServletRequest request) {
 		String sessionId = session.getId();
+		log.debug("URL : " +request.getRequestURL());
 		log.debug("PORT " + environment.getProperty("server.port") + " SESSION ID [" +sessionId + "]");
 		return session.getId();
 	}
