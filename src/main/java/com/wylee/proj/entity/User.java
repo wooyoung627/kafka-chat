@@ -2,27 +2,32 @@ package com.wylee.proj.entity;
 
 import java.time.LocalDateTime;
 
-import org.springframework.data.annotation.Id;
+import lombok.Data;
 import org.springframework.data.redis.core.RedisHash;
 
 import lombok.Getter;
 import lombok.ToString;
 
-@Getter
-@ToString
-@RedisHash(value="user")
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+
+//@RedisHash(value="user")
 //@RedisHash(value="user", timeToLive=30)
+@Data
+@Entity
 public class User {
+
 	@Id
 	private String id;
 	private String password;
-	private LocalDateTime createdAt;
+	private String nickname;
 	
 	public User() {}
-	
-	public User(String id, String password) {
+
+	public User(String id, String password, String nickname) {
 		this.id = id;
 		this.password = password;
-		this.createdAt = LocalDateTime.now();
+		this.nickname = nickname;
 	}
 }
