@@ -5,6 +5,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.security.core.Authentication;
 
+import com.wylee.proj.entity.User;
+
 import java.util.Date;
 
 public class JwtTokenProvider {
@@ -14,11 +16,11 @@ public class JwtTokenProvider {
     private static final String JWT_SECRET = "1234secret5678key!@#$";
     private static final int JWT_EXPIRATION_MS = 1000 * 60 * 60 * 24;
 
-    public static String generateToken(Authentication authentication){
+    public static String generateToken(User user){
         Date now = new Date();
         Date expiryDate = new Date(now.getTime() + JWT_EXPIRATION_MS);
         return Jwts.builder()
-                .setSubject((String) authentication.getPrincipal())
+                .setSubject(user.getId())
                 .setIssuedAt(new Date())
                 .setExpiration(expiryDate)
                 .signWith(SignatureAlgorithm.HS512, JWT_SECRET)

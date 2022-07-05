@@ -10,13 +10,21 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 
+
+@Slf4j
 @RestController
 @RequiredArgsConstructor
 public class SessionController {
-	static Logger log = LoggerFactory.getLogger(SessionController.class);
 	
 	private final Environment environment;
+	
+	@GetMapping("/test")
+	public String test() {
+		log.debug("** TEST **");
+		return "TEST!";
+	}
 	
 	@GetMapping("/port")
 	public String port() {
