@@ -25,14 +25,4 @@ public class UserService {
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         return userRepo.save(user);
     }
-    
-    public User auth(User param) {
-    	User user = userRepo.findById(param.getId()).orElseThrow(() -> new UsernameNotFoundException(param.getId()));
-    		
-    	if(!passwordEncoder.matches(param.getPassword(), user.getPassword())) {
-    		throw new BadCredentialsException("Password not matched");
-    	}
-    	
-    	return user;
-    }
 }

@@ -29,13 +29,4 @@ public class UserController {
         log.debug("user : " + user);
         return userService.saveUser(user);
     	}
-    
-    
-    @PostMapping("/sign-in")
-    public ResponseEntity<?> signIn(@RequestBody User param) {
-    		log.debug("sign in user : " + param);
-    		User user = userService.auth(param);
-    		String token = JwtTokenProvider.generateToken(user);
-    		return ResponseEntity.ok(token);
-    }
 }

@@ -50,7 +50,6 @@ public class JwtAuthenticationProvider implements AuthenticationProvider {
 
     @Override
     public boolean supports(Class<?> authentication) {
-//    		log.debug("@@ supports @@ " + authentication.toString());
     	return UsernamePasswordAuthenticationToken.class.isAssignableFrom(authentication);
     }
 }

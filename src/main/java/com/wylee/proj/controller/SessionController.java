@@ -1,6 +1,8 @@
 package com.wylee.proj.controller;
 
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
@@ -8,6 +10,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.core.env.Environment;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.wylee.proj.util.CookieUtil;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -19,11 +23,19 @@ import lombok.extern.slf4j.Slf4j;
 public class SessionController {
 	
 	private final Environment environment;
+	private final CookieUtil cookieUtil;
 	
 	@GetMapping("/test")
-	public String test() {
+	public String test(HttpServletResponse response) {
 		log.debug("** TEST **");
+//		response.addCookie(cookieUtil.createCookie("key", "value"));
 		return "TEST!";
+	}
+	
+	@GetMapping("/test2")
+	public String test2() {
+		log.debug("** TEST2 **");
+		return "TEST2!";
 	}
 	
 	@GetMapping("/port")

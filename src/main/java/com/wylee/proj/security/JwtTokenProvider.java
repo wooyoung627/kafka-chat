@@ -1,24 +1,34 @@
 package com.wylee.proj.security;
 
 import io.jsonwebtoken.*;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.security.core.Authentication;
+import lombok.extern.slf4j.Slf4j;
 
 import com.wylee.proj.entity.User;
 
 import java.util.Date;
 
+@Slf4j
 public class JwtTokenProvider {
 
-    static Logger log = LoggerFactory.getLogger(JwtTokenProvider.class);
-
     private static final String JWT_SECRET = "1234secret5678key!@#$";
-    private static final int JWT_EXPIRATION_MS = 1000 * 60 * 60 * 24;
+    
+    private static final int REF_JWT_EXPIRATION_MS = 1000 * 60 * 60 * 24 * 7;
+    private static final int ACC_JWT_EXPIRATION_MS = 1000 * 60 * 60 * 24;
+    
+    private static final String ACC_JWT_NAME = "acc";
+    private static final String REF_JWT_NAME = "ref";
+    
+    public static String generateAccToken(User user) {
+    	return generateToken(user, ACC_JWT_EXPIRATION_MS);
+    }
+    
+    public static String generateRefToken(User user) {
+    	return generateToken(user, REF_JWT_EXPIRATION_MS);
+    }
 
-    public static String generateToken(User user){
+    public static String generateToken(User user, int ms){
         Date now = new Date();
-        Date expiryDate = new Date(now.getTime() + JWT_EXPIRATION_MS);
+        Date expiryDate = new Date(now.getTime() + ms);
         return Jwts.builder()
                 .setSubject(user.getId())
                 .setIssuedAt(new Date())
@@ -36,7 +46,7 @@ public class JwtTokenProvider {
         return claims.getSubject();
     }
 
-    // 토큰 유효성 검사
+    	// 토큰 유효성 검사
     public static boolean validateToken(String token) {
         try {
             Jwts.parser().setSigningKey(JWT_SECRET).parseClaimsJws(token);
