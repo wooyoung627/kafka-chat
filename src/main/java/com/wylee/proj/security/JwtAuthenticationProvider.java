@@ -39,13 +39,10 @@ public class JwtAuthenticationProvider implements AuthenticationProvider {
     		
     		if(!passwordEncoder.matches(password, user.getPassword())) {
         		throw new BadCredentialsException("Password not matched");
-        		}
+    		}
     		
-    		// 임시
-    		List<GrantedAuthority> roles = new ArrayList<GrantedAuthority>();
-    		roles.add(new SimpleGrantedAuthority("ROLE_USER"));
     		
-    		return new UsernamePasswordAuthenticationToken(user, password, roles);
+    		return new UsernamePasswordAuthenticationToken(user, password, user.getAuthorities());
     }
 
     @Override

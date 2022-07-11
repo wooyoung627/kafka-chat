@@ -2,9 +2,9 @@ package com.wylee.proj;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.session.data.redis.config.annotation.web.http.EnableRedisHttpSession;
+import org.springframework.boot.autoconfigure.data.redis.RedisAutoConfiguration;
 
-@EnableRedisHttpSession
+//@EnableRedisHttpSession
 @SpringBootApplication
 public class ProjApplication {
 

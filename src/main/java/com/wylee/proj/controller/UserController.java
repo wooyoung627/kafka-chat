@@ -22,11 +22,11 @@ public class UserController {
     public User getUser(@RequestParam String id) throws Exception{
         log.debug("user id : " + id);
         return userService.getUser(id);
-    	}
+	}
 
     @PostMapping
     public User postUser(@RequestBody User user){
         log.debug("user : " + user);
         return userService.saveUser(user);
-    	}
+	}
 }

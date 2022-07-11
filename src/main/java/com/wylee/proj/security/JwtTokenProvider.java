@@ -12,11 +12,11 @@ public class JwtTokenProvider {
 
     private static final String JWT_SECRET = "1234secret5678key!@#$";
     
-    private static final int REF_JWT_EXPIRATION_MS = 1000 * 60 * 60 * 24 * 7;
-    private static final int ACC_JWT_EXPIRATION_MS = 1000 * 60 * 60 * 24;
+    public static final int REF_JWT_EXPIRATION_MS = 1000 * 60 * 60 * 24 * 7;
+    public static final int ACC_JWT_EXPIRATION_MS = 1000 * 60 * 60 * 24;
     
-    private static final String ACC_JWT_NAME = "acc";
-    private static final String REF_JWT_NAME = "ref";
+    public static final String ACC_JWT_NAME = "acc";
+    public static final String REF_JWT_NAME = "ref";
     
     public static String generateAccToken(User user) {
     	return generateToken(user, ACC_JWT_EXPIRATION_MS);
@@ -40,7 +40,7 @@ public class JwtTokenProvider {
     public static String getUserIdFromJWT(String token){
         Claims claims = Jwts.parser()
                 .setSigningKey(JWT_SECRET)
-                .parseClaimsJwt(token)
+                .parseClaimsJws(token)
                 .getBody();
 
         return claims.getSubject();
