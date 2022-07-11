@@ -6,7 +6,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.*;
 
-import com.wylee.proj.entity.User;
+import com.wylee.proj.domain.User;
 import com.wylee.proj.repository.UserRedisRepository;
 
 import lombok.RequiredArgsConstructor;

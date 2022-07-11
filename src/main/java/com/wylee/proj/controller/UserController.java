@@ -1,6 +1,6 @@
 package com.wylee.proj.controller;
 
-import com.wylee.proj.entity.User;
+import com.wylee.proj.domain.User;
 import com.wylee.proj.security.JwtTokenProvider;
 import com.wylee.proj.service.UserService;
 import lombok.RequiredArgsConstructor;

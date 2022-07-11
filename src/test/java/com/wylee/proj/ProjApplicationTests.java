@@ -8,6 +8,7 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.Set;
 
+import com.wylee.proj.domain.User;
 import com.wylee.proj.repository.UserDBRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,7 +18,6 @@ import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.SetOperations;
 import org.springframework.data.redis.core.ValueOperations;
 
-import com.wylee.proj.entity.User;
 import com.wylee.proj.repository.UserRedisRepository;
 import com.wylee.proj.util.RedisUtil;
 
@@ -28,7 +28,11 @@ class ProjApplicationTests {
 
 	@Test
 	void insertUser(){
-		User user = new User("id", "pw", "nick");
-		userRepo.save(user);
+//		User user = new User("id", "pw", "nick");
+//		userRepo.save(user);
+		
+		System.out.println("TEST");
 	}
+	
+	
 }

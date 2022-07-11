@@ -1,6 +1,6 @@
 package com.wylee.proj;
 
-import com.wylee.proj.entity.User;
+import com.wylee.proj.domain.User;
 import com.wylee.proj.repository.UserRedisRepository;
 import com.wylee.proj.util.RedisUtil;
 import org.junit.jupiter.api.Test;

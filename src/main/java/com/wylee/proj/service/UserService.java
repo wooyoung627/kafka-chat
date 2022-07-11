@@ -1,6 +1,6 @@
 package com.wylee.proj.service;
 
-import com.wylee.proj.entity.User;
+import com.wylee.proj.domain.User;
 import com.wylee.proj.repository.UserDBRepository;
 import lombok.RequiredArgsConstructor;
 

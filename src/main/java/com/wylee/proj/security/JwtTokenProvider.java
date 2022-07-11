@@ -3,9 +3,9 @@ package com.wylee.proj.security;
 import io.jsonwebtoken.*;
 import lombok.extern.slf4j.Slf4j;
 
-import com.wylee.proj.entity.User;
-
 import java.util.Date;
+
+import com.wylee.proj.domain.User;
 
 @Slf4j
 public class JwtTokenProvider {

@@ -17,7 +17,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Component;
 
-import com.wylee.proj.entity.User;
+import com.wylee.proj.domain.User;
 import com.wylee.proj.repository.UserDBRepository;
 
 @Slf4j
