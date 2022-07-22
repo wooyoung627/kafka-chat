@@ -47,7 +47,7 @@ public class SecurityConfig {
                 
                 .and()
                 .authorizeRequests()
-                .antMatchers("/user/**", "/test")
+                .antMatchers("/user/**", "/ws/chat", "/test")
                 .permitAll()
                 .anyRequest()
                 .authenticated()
