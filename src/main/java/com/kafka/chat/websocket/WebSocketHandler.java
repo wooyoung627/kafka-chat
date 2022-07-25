@@ -42,13 +42,13 @@ public class WebSocketHandler extends TextWebSocketHandler {
         log.info("Connect Close : " + session.getId());
     }
 
-    public synchronized void sendMsg(Message msg) throws IOException {
+    public synchronized void sendMsg(String msg) throws IOException {
         Set<String> keys = storage.keySet();
 
         for(String key : keys){
             WebSocketSession session = storage.get(key);
             if(session.isOpen())
-                session.sendMessage(new TextMessage(msg.toJson()));
+                session.sendMessage(new TextMessage(msg));
         }
     }
 }

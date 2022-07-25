@@ -4,12 +4,12 @@ import lombok.Data;
 
 @Data
 public class Message {
-    private String id;
+    private User user;
     private String msg;
 
     public String toJson(){
         StringBuilder json = new StringBuilder();
-        json.append("{\"id\" : \"" + this.id + "\", ");
+        json.append("{\"user\" : " + this.user.toJson() + " , ");
         json.append("\"msg\" : \"" + this.msg + "\" }");
         return json.toString();
     }

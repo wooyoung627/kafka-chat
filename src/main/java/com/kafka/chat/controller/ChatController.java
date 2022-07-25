@@ -1,6 +1,7 @@
 package com.kafka.chat.controller;
 
 import com.kafka.chat.dto.Message;
+import com.kafka.chat.service.ChatService;
 import com.kafka.chat.websocket.WebSocketHandler;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -16,15 +17,19 @@ import org.springframework.web.bind.annotation.RestController;
 public class ChatController {
 
     private final WebSocketHandler webSocketHandler;
+    private final ChatService chatService;
 
     @PostMapping
     public void postChat(@RequestBody Message msg){
 
         log.debug("Message : " + msg);
-        try{
-            webSocketHandler.sendMsg(msg);
-        }catch (Exception e){
-            e.printStackTrace();
-        }
+        chatService.sendChat(msg);
+
+
+//        try{
+//            webSocketHandler.sendMsg(msg);
+//        }catch (Exception e){
+//            e.printStackTrace();
+//        }
     }
 }
