@@ -1,5 +1,6 @@
 package com.kafka.chat.controller;
 
-public class KafkaController {
+import org.apache.kafka.common.serialization.StringDeserializer;
 
+public class KafkaController {
 }

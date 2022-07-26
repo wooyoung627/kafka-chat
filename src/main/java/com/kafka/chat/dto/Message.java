@@ -8,16 +8,13 @@ import java.time.format.DateTimeFormatter;
 
 @Data
 public class Message {
+
+    public static final String ENTER_MSG = " 님이 입장하셨습니다.";
+    public static final String EXIT_MSG = " 님이 퇴장하셨습니다.";
+
+    // 0 : chat, 1: info
+    private int state;
     private User user;
     private String msg;
-
     private LocalDateTime time = LocalDateTime.now();
-
-    public String toJson(){
-        StringBuilder json = new StringBuilder();
-        json.append("{\"user\" : " + this.user.toJson() + " , ");
-        json.append("\"msg\" : \"" + this.msg + "\" ," +
-                "\"time\" : \"" + this.time.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"))+ "\" }");
-        return json.toString();
-    }
 }

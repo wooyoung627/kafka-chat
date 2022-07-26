@@ -8,19 +8,19 @@ import org.springframework.stereotype.Component;
 @Component
 @Slf4j
 @RequiredArgsConstructor
-public class KafkaUtil {
-    private final KafkaTemplate<String, String> kafkaTemplate;
+public class KafkaUtil<T> {
+    private final KafkaTemplate<String, T> kafkaTemplate;
 
     private final String CHAT_TOPIC = "chat";
 
-    public void sendMsg(String topic, String msg){
+    public void sendMsg(String topic, T msg){
       log.debug("KAFKA TOPIC : " + topic);
       log.debug("KAFKA MESSAGE : " + msg);
 
       kafkaTemplate.send(topic, msg);
     }
 
-    public void sendChat(String msg){
+    public void sendChat(T msg){
         sendMsg(CHAT_TOPIC, msg);
     }
 }

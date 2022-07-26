@@ -1,6 +1,7 @@
 package com.kafka.chat.controller;
 
 import com.kafka.chat.dto.Message;
+import com.kafka.chat.dto.User;
 import com.kafka.chat.service.ChatService;
 import com.kafka.chat.websocket.WebSocketHandler;
 import lombok.RequiredArgsConstructor;
@@ -21,15 +22,20 @@ public class ChatController {
 
     @PostMapping
     public void postChat(@RequestBody Message msg){
-
         log.debug("Message : " + msg);
         chatService.sendChat(msg);
-
-
-//        try{
-//            webSocketHandler.sendMsg(msg);
-//        }catch (Exception e){
-//            e.printStackTrace();
-//        }
     }
+
+    @PostMapping("/enter")
+    public void enterRoom(@RequestBody User user){
+        log.debug("Enter Room : " + user);
+        chatService.enterRoom(user);
+    }
+
+    @PostMapping("/exit")
+    public void exitRoom(@RequestBody User user){
+        log.debug("Exit Room : " + user);
+        chatService.exitRoom(user);
+    }
+
 }
